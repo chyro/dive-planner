@@ -1,0 +1,44 @@
+
+/*
+Using position absolute to position elements with the dive. Nothing else makes sense
+considering how arbitrary the element posistions are. Containers are therefore relative.
+*/
+
+// Note: might need a "default" class to make e.g. ox% not stand out when not explicitely set. The class will have to be set / unset in JS but style can be defined here.
+
+.rdp-calculator {
+    @std-padding: 5px; // can't use normal padding in position absolute
+    @elem-height: 20px;
+
+    > div {
+        // big blocks
+        display: inline-block; position: relative; border: 1px solid grey; margin: 5px;
+        // small blocks
+        > * {
+            position: absolute; width: 50px; height: @elem-height;
+        }
+
+        &.dive {
+            width: 400px; height: 200px; /* todo: bg image */ /* canvas / draw? */
+            .start-group { left: @std-padding; top: @std-padding; }
+            .start-o2exp { left: @std-padding; top: @elem-height + @std-padding*2; }
+            .depth { left: 50px; top: 80px; }
+            .duration { left: 200px; top: 170px; }
+            /* to do: other blocks */
+            .ox-per { left: @std-padding; top: 120px; }
+            .adjusted-depth { left: 50px; top: 110px; }
+            .end-group { right: @std-padding; top: @std-padding; }
+            .end-o2exp { right: @std-padding; top: @elem-height + @std-padding*2; }
+        }
+        &.interval {
+            width: 200px; height: 200px; /* todo: bg image */
+            /* to do: other blocks */
+            .start-group { left: @std-padding; top: @std-padding; }
+            .duration { left: 80px; top: 50px; }
+            .end-group { right: @std-padding; top: @std-padding; }
+        }
+
+    }
+
+}
+
