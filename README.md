@@ -16,7 +16,11 @@ Useful to:
 * LESS, using less.js to avoid compiling
     <link href="RDP.less" type="text/css" rel="stylesheet/less" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
-* uses canvas for graphics - more flexible than images for possibly upcoming multilevel dives. (TODO)
+* Uses canvas for graphics - more flexible than images for possibly upcoming multilevel dives.
 
-TODO: make sure the graphics can be reused independently in other projects
+==== Coming (maybe) ====
+
+* test mode: select random depth / duration / starting group, don't show the answer, user looks up, submits, gets checked
+* backwards mode: calculate early values to accomodate for later values
+* actual formulas rather than dive tables (not suitable for planning though)
 

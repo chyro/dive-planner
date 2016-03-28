@@ -1,0 +1,39 @@
+<html>
+<head>
+    <link href="rdp.calculator.less" type="text/css" rel="stylesheet/less" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+</head>
+<body>
+<div class="rdp-calculator"></div>
+
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js'></script>
+<script>
+var myRDP, myRDPCalculator; // initialized by loaded JS
+(function () {
+  // TODO: get list of es6 files from $('head'), load them all
+  // TODO: move babel and less.js to an autocompile.js file?
+  // make a separate github for that?
+  $.get("RDP.es6", function(data) {
+    eval(babel(data).code);
+  });
+  $.get("rdp.calculator.es6", function(data) {
+    eval(babel(data).code);
+  });
+}());
+</script>
+
+<script>
+//new RDPCalculator($('.rdp-calculator')[0]);
+</script>
+
+<div id="library" style="display:none;">
+<!-- https://www.iconfinder.com/icons/14417/animal_fish_yellow_icon#size=16 -->
+<!-- https://www.iconfinder.com/icons/17850/animal_babelfish_fish_icon#size=22 -->
+<!-- https://www.iconfinder.com/icons/6325/animal_blue_fish_icon#size=128 too big! -->
+<img id="splashyfish" class="fish" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABnklEQVQ4T82TTU4bQRCFX3WNfwYSxYCRLFkhQskmqxgJIXZYXAA4AeMVO/ANPD4BgR2LyOMb4BOEEwRYISGQDJJ3CT/CyB57ugqNLUwisoINtSt1va9V73UTXln0Sj3eGOC+xqsGKIOwFK+mioYCwXjJ7sd9u5YoMMk2gCKUqm4p8kcrdAKucV49/qwwOR1YIy2CbRJsiw6gtkTEh868ZExeETYYrmdpAOjUTUWm1B9brgBuBehUgY4/8jc6I9gLA/4kcL4otA2EP7npenZ2AOgGfI2vNpNaUFzuMmY2LXq/CMnc/zPqnxhIC+X0uuyMAMlFm6HpCjDpA1c+eqdVJKefA+wfQnRi9tOeXYtPhysEXHNy6okr/yiSk0+t3BHM+6E3/XOD/jWtxeYOALqHD2GKm85HyfDUcOixYmH0myC3dMBZLSbyAmkT+ud0lPZkbpRC70fim7ANKIuCeQeYCYVcxebRDRG81LptdANn2+SlzFlF79g8pfD3jWGdVwRagFKRQEepMPJpA7ePM9262VKlVUP4HkPf2FN+yc98AF09oxE5eNSCAAAAAElFTkSuQmCC" />
+<img id="crystalproject" class="fish" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAEcElEQVQ4T62Vj1PTdRjHX9/tuy3YnCIggW6BGhDgQpyCMkWYYiKGliQageePOk0xoUxFr/SSzEA8vTzz8jS9A73yiE6tNE29S8/A9EgRLCMQimSyITC2wUY3sc48Ebrr/Qe8Ps/neT/P+xH4HxQgJ9RPRcTlZo4DVjdS+C/cV8aQqpQwaHcZByKUTJoRNjh1+szkOGflmSdzvqnbfMVMPuDqNzg+hNj1z7FphEjs/nL/c7ExBu1447QQZZSBuqP7mPrG9pwbFvu2B4t8bMW+vqjykimYFcZCl2S0KAtOxyt8AngNAUFO+8VSJs9ZnlfeSu7DP+8NLL4US2LWRAp0T48LlYxMR6nVg0wEhxUcTqCLHdmvVqw8XhsJdPcHLCtdw5cTnvJJ9AzMkHiOTACJtAfobp/TBXYZttpKjh3a2ZR7+s+51Sa+6xOcO4sPVicPX60cnY3ULwxab4PdBFIpSIAOF7TKMJWfQtTpsJnLHAlLv5h93XxvIv7Rv1qhH0bS0Q3BpX7jFoiISpCowCcSuszQfL5nhuxAo0jz1XOIz09AHTKQnBlvH972lS3tkWBjEOl5r8cUahJX+cjba/AWTOB03jOJkHlg/RFaLoFEhHoJlorruKK0DB4qY07qx/lHKrpy9b4YIzSq6KqGtnohdDDjF05Rr8peEZ36m0c6H5VYMOpEkrSXETpd4LCB7xjQhIKpGCQuMEtwXGjCFuii0XKrI2dN1d6sBfGJxsylwTdPFGNcXTJfWBJD8Z5d3mmoI2mxj+WH2nAiAm7g33EFrAJ0OsBTC+HR0F4CdEKnABec1P1RQVW91T42frnCy5BCd/01EmYuzT9zy/GWu2va/EWU5qyTRCJ4g8IPuj2gVgatEuiywwAdPOMFwinACS4rnGih8qwFzbQlDIjQg+Dg4md7LTEbyqKAmr/NCypYIXyenaeOossF3a1wWQ4mOYhqUD0Lo66Ad1MPuK0bDkHjHQ1+MS8jqJ3gJbBl3b7za480xT680kG5i4S97+3SxHO3DcqboU0AqR8470KSFTzv+/4rcExKi2IYA6fPA1EE5V1em3vw4J6vzRmPygqfFbP4pCBndopM4QUNJdBmhiFA4n2oO2K+lYA5gB2Hfr/54rLowKFTp0tBy7uZW0o2Hqh6obcQUry/UH9izdaNkzDdgl8OQNhPENTaQ64Amg2YGxpcgZk1yVpfwvcVat7Rpy1WfX+4usaQVhTidviRWaESibtWnHJcO3q8Jx028PgZRvhC0w1o8AEPKzs3lVzIKnJOcoeGSiR+XpL/MkNUsG5D4dn5dS1c6jXd9mcPL8tcadTT4c6JRlAHgHIUSBu4VlTYHvdme8odG+4xeVD+7qUHLL2CM4yDtn96ePJKOkW67R0UFZ6sGTbENUCUd4mLPmRt9W12P+5I9ApWKBh5cKvuWGrWlGBwsHP9yVNZm6uXAB5AZV+Xp6/TNGrt4pjCxcuiJ9ZfPd8Ul1E2HPcr/VBfYDdC/gQYPBWIzXZO30v4fugvC5iPWBZDLygAAAAASUVORK5CYII=" />
+</div>
+
+</body></html>
+

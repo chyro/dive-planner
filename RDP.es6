@@ -1,3 +1,8 @@
+/**
+ * RDP library
+ *
+ * Contains various helpers to manipulate RDP-related stuff
+ */
 
 // RDP table, front, top/left
 const RDP1aCSV = `,10,12,14,16,18,20,22,25,30,35,40,42
@@ -99,6 +104,7 @@ class ArrayUtil {
         this.colHeaders = colHeaders;
         this.content = content; // 2D array
     }
+
     getColumn (colnum) {
         let column = [];
         for (let i = 0; i < this.content.length; i++) {
@@ -106,12 +112,15 @@ class ArrayUtil {
        }
         return column;
     }
+
     getLine (linenum) {
         return this.content[linenum];
     }
+
     getVal (linenum, colnum) {
         return this.content[linenum][colnum];
     }
+
     /**
      * Returns the index of the lowest fitting value
      *
@@ -122,30 +131,32 @@ class ArrayUtil {
      */
     static getIndexMinFit (value, data) {
         for (let i = 0; i < data.length; i++) {
-            //TODO: if data[i] is empty, we've run out => return;
+            //possible optimisation: if data[i] is empty (and previous data[i-1] were not), we've run out => return;
             if (data[i] >= value) return i;
         }
     }
 
     static getIndexMaxFit (value, data) {
         for (let i = data.length; i >= 0; i--) {
-            //TODO: if data[i] is empty, we've run out => return;
+            //possible optimisation: if data[i] is empty (and previous data[i+1] were not), we've run out => return;
             if (data[i] >= value && data[i] != undefined) return i;
         }
     }
 }
 
+/**
+ * CSV loader
+ *
+ * Creates an ArrayUtil based on a string containing a whole CSV file.
+ */
 class CSV {
     static parse (...options) {
         return new CSV(...options);
     }
+
     constructor (strCSV, hasColHeaders = true, hasLineHeaders = false) {
-        //let csvLines = strCSV.split("\n");
-        //this.body = csvLines.map(l => k.split(','));
         this.body = strCSV.split("\n").map(l => l.split(','));
         if (hasColHeaders) {
-            //this.colHeaders = this.body[0];
-            //this.body.shift();
             this.colHeaders = this.body.shift();
             if (hasLineHeaders) {
                 this.colHeaders.shift();
@@ -154,8 +165,6 @@ class CSV {
         if (hasLineHeaders) {
             this.lineHeaders = [];
             for (let i = 0; i < this.body.length; i++) {
-                //this.lineHeaders.push(this.body[i][0]);
-                //this.body[i].shift();
                 this.lineHeaders.push(this.body[i].shift());
             }
         }
@@ -226,8 +235,8 @@ class RDP {
         if (lineIndex == undefined) throw "Off the charts!";
 
         let residual = this.RDP2a.getVal(lineIndex,colIndex);
-        //if (residual == undefined) throw "Off the charts!";
-  
+        if (residual == undefined) throw "Off the charts!";
+
         return residual;
     }
 
@@ -273,4 +282,9 @@ console.log('W, 2H: ' + myRDP.getGroupAfterSurface('W', 120) + ''); // C
 console.log('W, 2H: ' + myRDP.getGroupAfterSurface('W', 125) + ''); // B
 console.log('W, 20m: ' + myRDP.getResidualNitrogene(20, 'W') + '/' + myRDP.getNDL(20,'W')); // undefined / undefined
 console.log('W, 14m+e: ' + myRDP.getResidualNitrogene(14.5, 'W') + '/' + myRDP.getNDL(14.5,'W')); // 70 / 2
+console.log('A, 20m: ' + myRDP.getResidualNitrogene(20, 'A') + '/' + myRDP.getNDL(20,'A')); // 6 / 39
 */
+
+// Making available to upper scope
+myRDP = new RDP();
+
