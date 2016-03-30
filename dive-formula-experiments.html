@@ -1,0 +1,104 @@
+<html>
+<head></head>
+<body>
+<script src='js/js-solver.js'></script>
+<script src='js/algebra.min.js'></script>
+<script src='js/numeric-1.2.6.min.js'></script>
+<!-- jquery to show results? or KO? -->
+<script>
+"use strict";
+
+/*
+var mySolver = new Solver({
+    a: 'b+c',
+    b: 'a-c',
+    c: 'a-c'
+});
+
+var values = mySolver.solve({
+    b: 2,
+    c: 3
+});
+
+console.log(values);
+*/
+
+/*
+var scubaFormula = {
+    maxDepth:         '(14/EANx)-10',
+    contingencyDepth: '(16/EANx)-10',
+    adjustedDepth:    '((1-EANx) * (depth+10) / .79) - 10',
+    o2Pressure:       '(depth+10) / 10 * EANx',
+    EANx:             'EANx',
+    depth:             'depth'
+};
+
+var solver = new Solver(scubaFormula);
+
+console.log(solver.solve({
+    depth: 19.3,
+    EANx: .39
+}));
+
+console.log(solver.solve({
+    depth: 23.2,
+    EANx: .37
+}));
+*/
+
+/*
+var test = new Solver({x: 'y+z', y:'y', z: 'z'});
+console.log(test.solve({x:1,y:2}));
+Does not give z! => NOT GOOD (or maybe good enough?)
+*/
+
+// algebra.js to get z from x / y, then solver to calculate z?
+
+// or can algebra.js do it by itself?
+
+/*
+var x = new algebra.Expression('x');
+var y = new algebra.Expression('y');
+var z = new algebra.Expression('z');
+var eq = new algebra.Equation(x, y.add(z));
+console.log(eq.toString());
+console.log(eq.solveFor('z').toString());
+console.log(eq.solveFor('z').eval({x:1,y:2}).toString());
+console.log(eq.eval({x:1,y:2}).toString());
+console.log(eq.eval({x:1,y:2}).solveFor('z').toString());
+*/
+
+// This is great to solve one complex equation, but what about a group of equations?
+
+/*
+Equation solving:
+https://stat.ethz.ch/R-manual/R-devel/library/stats/html/approxfun.html
+http://www.r-bloggers.com/interpolation-and-smoothing-functions-in-base-r/
+RDP tables equations:
+http://njscuba.net/gear/trng_10_deco.php
+http://www.lizardland.co.uk/DIYDeco.html
+https://en.wikipedia.org/wiki/Decompression_theory#Tissue_compartments
+*/
+
+/* http://www.scubaboard.com/community/threads/calculating-pressure-groups-and-rnt.201480/
+The pressure groups on the RDP correspond to dissolved N2 partial pressure in the 60 minute compartment.
+
+I did a spreadsheet, and then fiddled with the numbers a bit to match up, within +/-1 minute to the various entries in the RDP. I came to the conclusion that they used H2O vapor pressure of 1.6fsw. (H2O pressure is subtracted from ambient pressure first, and then the remaining pressure is multiplied by 0.79 to get inspired N2 pressure).
+
+I furthermore came to the conclusion that pressure group Z corresponds to 98% of the way from a starting saturation N2 pressure of 24.81fsw-absolute and the DSAT algorithm 60 minute M-value. Each pressure group below that is 3% less -- ie Y is 95%, W is 92%, .... down to C is 26%. A and B are unique, and correspond to 12% and 21% of M value.
+
+There is just one basic equation used for the body of the table. It is the no-stop equation of http://www.rebreather.ca/Library/No-Stop_Time.pdf , but with the lower % of M value for that particular pressure group subtituted for the full M-value.
+
+To get the NDL numbers, however, you have to run the equation of each compartment halftime and limit, and NDL is reach whenever any one of the compartment limits is reached. The pressure groups, however, are solely based upon the 60 minute compartment.
+
+Charlie Allen
+*/
+
+//https://github.com/DIY-Dive-Computer/DIY-Dive-Computer/blob/v0.1/Dive_Computer_Code/Dive_Computer_Code.ino
+
+// But what do I NEED
+// I guess something to auto-fill my dive log would be nice => calculate using tables, as a human would have
+
+</script>
+</body>
+</html>
