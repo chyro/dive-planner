@@ -30,7 +30,7 @@ considering how arbitrary the element posistions are. Containers are therefore r
                 .start-o2exp { left: @std-padding; top: @elem-height + @std-padding*2; }
                 .depth { left: 50px; top: 80px; }
                 .residual-duration { left: 150px; top: 170px; }
-                .duration { left: 200px; top: 170px; }
+                .duration { left: 40%; top: 170px; }
                 .ox-per { left: @std-padding; top: 120px; }
                 .opp { left: @std-padding; top: 150px; }
                 .adjusted-depth { left: 70px; top: 110px; }
@@ -40,8 +40,13 @@ considering how arbitrary the element posistions are. Containers are therefore r
             &.interval {
                 width: 200px; height: 200px;
                 .start-group { left: @std-padding; top: @std-padding; }
-                .duration { left: 80px; top: 50px; }
+                .duration { left: 40%; top: 50px; }
                 .end-group { right: @std-padding; top: @std-padding; }
+            }
+
+            @media (max-width: 800px) {
+                &.dive { width: 100%; }
+                &.interval { width: 100%; height: 100px; }
             }
         }
     }

@@ -24,18 +24,18 @@ const baseLayout = `<div class="plan"></div><div class="controls"><button class=
 const templateDive = `<div class="dive">
     <input class="start-group" />
     <input class="start-o2exp" />
-    <input class="depth" />
+    <input class="depth" placeholder="depth" />
     <input class="ox-per" value="21" />
     <input class="opp locked" disabled="disabled" />
     <input class="adjusted-depth locked" disabled="disabled" />
-    <input class="duration" />
+    <input class="duration" placeholder="time" />
     <input class="residual-duration locked" disabled="disabled" />
     <input class="end-group" />
     <input class="end-o2exp" />
 </div>`;
 const templateInterval = `<div class="interval">
     <input class="start-group" />
-    <input class="duration" />
+    <input class="duration" placeholder="time" />
     <input class="end-group" />
 </div>`;
 
