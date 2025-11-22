@@ -22,21 +22,21 @@
 
 const baseLayout = `<div class="plan"></div><div class="controls"><button class="add-dive">+</button><span class="log"></span></div>`;
 const templateDive = `<div class="dive">
-    <input class="start-group" />
-    <input class="start-o2exp" />
-    <input class="depth" placeholder="depth" />
-    <input class="ox-per" value="21" />
+    <input class="start-group" title="Pressure group before the dive" />
+    <input class="start-o2exp locked" />
+    <input class="depth" placeholder="depth" title="Dive depth (meters)" />
+    <input class="ox-per" value="21" title="Oxygen percentage" />
     <input class="opp locked" disabled="disabled" />
-    <input class="adjusted-depth locked" disabled="disabled" />
-    <input class="duration" placeholder="time" />
-    <input class="residual-duration locked" disabled="disabled" />
-    <input class="end-group" />
-    <input class="end-o2exp" />
+    <input class="adjusted-depth locked" disabled="disabled" title="Adjusted depth (from O2%)" />
+    <input class="duration" placeholder="time" title="Dive duration (minutes)" />
+    <input class="residual-duration locked" disabled="disabled" () />
+    <input class="end-group" title="Pressure group after the dive" />
+    <input class="end-o2exp locked" />
 </div>`;
 const templateInterval = `<div class="interval">
-    <input class="start-group" />
-    <input class="duration" placeholder="time" />
-    <input class="end-group" />
+    <input class="start-group" title="Pressure group before the interval" />
+    <input class="duration" placeholder="time" title="Interval duration (minutes)" />
+    <input class="end-group" title="Pressure group after the interval" />
 </div>`;
 
 const RDPFormulas = {
